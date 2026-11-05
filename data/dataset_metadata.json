@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-11-05T13:59:51+00:00",
+  "seed": 42,
+  "files": {
+    "reference_data.csv": {
+      "rows": 5000,
+      "sha256": "b7a9f49881dcfe90863a4d0546a8286aed9f809beae242ca3cc01ae8196c2231"
+    },
+    "current_data.csv": {
+      "rows": 5000,
+      "sha256": "34cd126c3c1dd7dad3b94a78ba8a67337d4b705c85b5d2ef28c6a7daa957121f"
+    }
+  }
+}

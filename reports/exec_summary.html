@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resumo Executivo de Drift</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f5f5f3; --surface: #fcfcfb; --border: #dcdbd6;
+  --text: #0b0b0b; --text-2: #52514e; --muted: #75746f;
+  --good: #0a7d0a; --warning: #9a6b00; --critical: #c03030;
+  --good-bg: #e7f5e7; --warning-bg: #fdf3dc; --critical-bg: #fbe9e9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121211; --surface: #1a1a19; --border: #3a3936;
+    --text: #f0efec; --text-2: #c3c2b7; --muted: #9a998f;
+    --good: #3cc23c; --warning: #fab219; --critical: #e66767;
+    --good-bg: #13301a; --warning-bg: #3a2e10; --critical-bg: #3b1a1a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121211; --surface: #1a1a19; --border: #3a3936;
+  --text: #f0efec; --text-2: #c3c2b7; --muted: #9a998f;
+  --good: #3cc23c; --warning: #fab219; --critical: #e66767;
+  --good-bg: #13301a; --warning-bg: #3a2e10; --critical-bg: #3b1a1a;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 1240px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 1.7rem; margin: 0 0 4px; }
+h2 { font-size: 1.15rem; margin: 36px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.meta { color: var(--text-2); font-size: .9rem; }
+.meta code { font-size: .85rem; }
+.banner { margin-top: 20px; padding: 16px 18px; border-radius: 10px; border-left: 6px solid; background: var(--surface); }
+.banner.critical { border-color: var(--critical); background: var(--critical-bg); }
+.banner.warning { border-color: var(--warning); background: var(--warning-bg); }
+.banner.none { border-color: var(--good); background: var(--good-bg); }
+.banner strong { font-size: 1.05rem; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.kpi .value { font-size: 1.9rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.kpi .label { color: var(--text-2); font-size: .85rem; }
+.callout { margin-top: 16px; padding: 14px 16px; border-radius: 10px; background: var(--warning-bg); border: 1px solid var(--warning); }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th { color: var(--text-2); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.drift td { background: var(--critical-bg); }
+tr:last-child td { border-bottom: none; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: .8rem; font-weight: 600; border: 1px solid; }
+.badge.drift, .badge.critical { color: var(--critical); border-color: var(--critical); }
+.badge.no_drift, .badge.ok { color: var(--good); border-color: var(--good); }
+.badge.not_tested, .badge.warning { color: var(--warning); border-color: var(--warning); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.card h3 { margin: 0 0 8px; font-size: .95rem; }
+dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0; font-size: .9rem; }
+dt { color: var(--text-2); }
+dd { margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+ul { padding-left: 20px; }
+li { margin: 6px 0; }
+.small { color: var(--muted); font-size: .85rem; }
+footer { margin-top: 40px; color: var(--muted); font-size: .8rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Relatório Executivo: Monitoramento de Data Drift</h1>
+<div class="meta">Execução <code>run-20261105T140419Z-f3746030</code> · Análise em 2026-11-05T14:04:19+00:00 (UTC)
+ · alpha = 0.05 · seed dos dados = 42</div>
+
+<div class="banner critical">
+  <strong>🚨 Alerta crítico: retreinamento recomendado? SIM</strong><br>
+  Retreinamento recomendado, após revisão da qualidade dos dados (tratar ou corrigir os valores ausentes antes de montar o novo conjunto de treino).
+  <div class="small">Ação: <code>RETRAIN_RECOMMENDED_AFTER_DATA_QUALITY_REVIEW</code></div>
+</div>
+
+<h2>Diagnóstico da saúde dos dados</h2>
+<p><strong>🚨 Saúde dos dados comprometida.</strong> 4 de 5 variáveis (80.0%) apresentam drift estatístico; 1 variável(is) com falha de qualidade de dados.</p>
+<div class="kpis">
+  <div class="kpi"><div class="value">5</div><div class="label">variáveis analisadas</div></div>
+  <div class="kpi"><div class="value">4 (80%)</div><div class="label">variáveis com drift</div></div>
+  <div class="kpi"><div class="value">4</div><div class="label">drift de severidade alta</div></div>
+  <div class="kpi"><div class="value">1</div><div class="label">variáveis com falha de qualidade</div></div>
+</div>
+<div class="callout"><strong>⚠️ Falha de Data Quality: valores ausentes (NaN) em <code>temperature</code></strong>: 250 registros (5.00%) estão vazios no conjunto de produção, contra 0 (0.00%) na referência. Status de qualidade: <strong>⚠️ Alerta</strong>. O teste de drift desta variável foi calculado apenas sobre os valores válidos; os ausentes são tratados como um problema de integridade, não como drift. Na inferência, esses 250 registros foram imputados com a mediana de treino (24.99).</div>
+
+<h2>Resultados consolidados</h2>
+<div class="table-wrap"><table><tr><th>Variável</th><th>Tipo</th><th>Teste</th><th>Estatística</th><th>P-value</th><th>Efeito</th><th>Severidade</th><th>Status</th><th>NaN (prod.)</th><th>Data Quality</th></tr><tr class="drift"><td><strong>temperature</strong></td><td>Numérica</td><td>KS</td><td class="num">0.2780</td><td class="num">3.727e-166</td><td class="num">KS D 0.2780</td><td>Alta</td><td><span class="badge drift">🚨 DRIFT</span></td><td class="num">250 (5.00%)</td><td><span class="badge warning">⚠️ Alerta</span></td></tr><tr class="drift"><td><strong>humidity</strong></td><td>Numérica</td><td>KS</td><td class="num">0.5484</td><td class="num">&lt; 1e-300</td><td class="num">KS D 0.5484</td><td>Alta</td><td><span class="badge drift">🚨 DRIFT</span></td><td class="num">0 (0.00%)</td><td><span class="badge ok">✅ OK</span></td></tr><tr class="no_drift"><td><strong>wind_speed</strong></td><td>Numérica</td><td>KS</td><td class="num">0.0126</td><td class="num">0.8223</td><td class="num">KS D 0.0126</td><td>—</td><td><span class="badge no_drift">✅ Estável</span></td><td class="num">0 (0.00%)</td><td><span class="badge ok">✅ OK</span></td></tr><tr class="drift"><td><strong>precipitation</strong></td><td>Numérica</td><td>KS</td><td class="num">0.4520</td><td class="num">&lt; 1e-300</td><td class="num">KS D 0.4520</td><td>Alta</td><td><span class="badge drift">🚨 DRIFT</span></td><td class="num">0 (0.00%)</td><td><span class="badge ok">✅ OK</span></td></tr><tr class="drift"><td><strong>sky_condition</strong></td><td>Categórica</td><td>Qui-Quadrado</td><td class="num">3571.4286</td><td class="num">&lt; 1e-300</td><td class="num">V de Cramér 0.5976</td><td>Alta</td><td><span class="badge drift">🚨 DRIFT</span></td><td class="num">0 (0.00%)</td><td><span class="badge ok">✅ OK</span></td></tr></table></div>
+<p class="small">🚨 DRIFT: p-value &lt; alpha. ✅ Estável: sem evidência estatística de drift
+(não comprova igualdade). Efeito: KS D para numéricas (distância máxima entre as distribuições
+acumuladas) e V de Cramér para categóricas.</p>
+
+<h2>Modelo em produção</h2>
+<div class="grid-2"><div class="card"><h3>Artefato em produção</h3><dl><dt>Versão</dt><dd><code>rain-model-20261105T135951Z</code></dd><dt>Algoritmo</dt><dd>LogisticRegression</dd><dt>Treinado em</dt><dd>2026-11-05T13:59:51+00:00 (UTC)</dd><dt>Treinado nesta execução</dt><dd>Não (artefato .joblib reutilizado)</dd><dt>Linhagem dos dados</dt><dd>✅ verificada (SHA-256 da referência confere)</dd><dt>SHA-256 do treino</dt><dd><code>b7a9f49881dcfe90…</code></dd></dl></div><div class="card"><h3>Métricas no holdout (treino)</h3><dl><dt>ROC AUC</dt><dd>0.7946</dd><dt>Acurácia</dt><dd>0.7990</dd><dt>Precisão</dt><dd>0.7552</dd><dt>Recall</dt><dd>0.3942</dd><dt>F1</dt><dd>0.5180</dd><dt>Taxa real de chuva</dt><dd>0.2740</dd><dt>Taxa prevista de chuva</dt><dd>0.1430</dd></dl></div><div class="card"><h3>Comportamento em produção</h3><dl><dt>Registros inferidos</dt><dd>5000</dd><dt>Imputações (NaN)</dt><dd>temperature: 250</dd><dt>Taxa prevista de chuva</dt><dd>15.8% → 92.6%</dd><dt>Score médio</dt><dd>0.273 → 0.841</dd><dt>Drift de predição</dt><dd><span class="badge drift">🚨 DRIFT</span> KS D = 0.7754, p &lt; 1e-300, severidade alta</dd></dl></div></div><p class="small">O pipeline de monitoramento apenas carrega o modelo salvo e executa a inferência; o treino é uma etapa separada (<code>python -m src.train_model</code>).</p>
+
+<h2>Diagnóstico técnico</h2>
+<ul><li><strong>temperature</strong>: drift detectado, severidade <strong>alta</strong>. média 24.92 → 22.04 (-2.88); desvio padrão 4.00 → 4.54; mediana 24.98 → 22.01. Kolmogorov-Smirnov (two-sample): estatística = 0.2780, p-value = 3.727e-166; KS D = 0.2780.</li><li><strong>humidity</strong>: drift detectado, severidade <strong>alta</strong>. média 59.99 → 74.84 (+14.85); desvio padrão 10.13 → 10.02; mediana 59.80 → 74.85. Kolmogorov-Smirnov (two-sample): estatística = 0.5484, p-value &lt; 1e-300; KS D = 0.5484.</li><li><strong>wind_speed</strong>: estável: sem evidência estatística de drift ao nível alpha configurado (o que não comprova que as distribuições sejam idênticas). média 10.73 → 10.67 (-0.06); desvio padrão 5.59 → 5.56; mediana 10.03 → 10.04. Kolmogorov-Smirnov (two-sample): estatística = 0.0126, p-value = 0.8223; KS D = 0.0126.</li><li><strong>precipitation</strong>: drift detectado, severidade <strong>alta</strong>. média 2.02 → 5.93 (+3.91); desvio padrão 2.24 → 4.76; mediana 1.27 → 4.69. Kolmogorov-Smirnov (two-sample): estatística = 0.4520, p-value &lt; 1e-300; KS D = 0.4520.</li><li><strong>sky_condition</strong>: drift detectado, severidade <strong>alta</strong>. proporções clear 60.0% → 10.0% (-50.0 p.p.); cloudy 30.0% → 30.0% (+0.0 p.p.); rainy 10.0% → 60.0% (+50.0 p.p.); graus de liberdade = 2; aproximação assintótica válida (condições de Cochran atendidas). Chi-square test of independence: estatística = 3571.4286, p-value &lt; 1e-300; V de Cramér = 0.5976.</li></ul>
+<p>As variáveis temperature, humidity, precipitation, sky_condition chegam em produção com distribuição diferente da usada no treinamento. O modelo passa a receber entradas em regiões pouco representadas no treino, o que tende a degradar a acurácia e a calibração. Efeito observado no modelo rain-model-20261105T135951Z: a taxa prevista de chuva passou de 15.8% (referência) para 92.6% (produção) e o score médio de 0.273 para 0.841. Como os rótulos de produção ainda não estão disponíveis, não é possível afirmar se essas previsões estão corretas; a confirmação depende do ground truth. Os valores ausentes em temperature são imputados com a mediana do período de treino, que não representa mais o padrão atual; isso enviesa as previsões desses registros e mascara a falha do sensor.</p>
+
+<h2>Recomendação de ação</h2>
+<p><strong>Retreinamento recomendado, após revisão da qualidade dos dados (tratar ou corrigir os valores ausentes antes de montar o novo conjunto de treino).</strong></p>
+<p>Motivos que sustentam a decisão:</p>
+<ul><li>4 variável(is) com drift de severidade alta (temperature, humidity, precipitation, sky_condition); limiar: 1.</li><li>80.0% das variáveis apresentam drift (limiar: 50%).</li><li>Drift de predição de severidade alta: as predições do modelo mudaram: taxa prevista de &#x27;rain_tomorrow&#x27; 15.8% → 92.6% (KS D = 0.7754, severidade alta).</li><li>Data Quality (temperature): 5.00% de valores ausentes em produção (limiar de alerta 1.0%; referência 0.00%).</li><li>Inferência: 250 valores ausentes de temperature foram imputados com a mediana de treino (24.99).</li></ul>
+<p class="small">O pipeline apenas recomenda; o retreinamento não é executado automaticamente.
+Critérios aplicados:</p>
+<ul class="small"><li><code>high_severity_drift_count</code> = 1</li><li><code>drifted_share_threshold</code> = 0.5</li><li><code>prediction_drift_triggers_retraining</code> = True</li><li><code>missing_warning_pct</code> = 1.0</li><li><code>missing_critical_pct</code> = 10.0</li><li><code>ks_severity_moderate</code> = 0.1</li><li><code>ks_severity_high</code> = 0.2</li><li><code>cramers_v_severity_moderate</code> = 0.1</li><li><code>cramers_v_severity_high</code> = 0.3</li></ul>
+
+<footer>Gerado automaticamente por <code>src/report_generator.py</code> a partir de
+<code>data/drift_summary.json</code> (execução <code>run-20261105T140419Z-f3746030</code>). Drift
+estatístico, qualidade de dados e decisão de retreinamento são avaliados separadamente.</footer>
+</main>
+</body>
+</html>

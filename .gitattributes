@@ -1,0 +1,5 @@
+# Data and model artefacts are versioned byte-for-byte: the model metadata stores
+# the SHA-256 of reference_data.csv for lineage checks, so line endings must never
+# be converted on checkout (Windows/Linux/macOS clones must hash identically).
+data/** -text
+models/** -text

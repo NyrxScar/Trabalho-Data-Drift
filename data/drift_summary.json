@@ -1,0 +1,390 @@
+{
+  "schema_version": "2.0",
+  "run": {
+    "run_id": "run-20261105T140419Z-f3746030",
+    "timestamp": "2026-11-05T14:04:19+00:00",
+    "seed": 42,
+    "alpha": 0.05,
+    "data_generated_this_run": false,
+    "model_trained_this_run": false
+  },
+  "summary": {
+    "total_features_analyzed": 5,
+    "tested_features": 5,
+    "features_with_drift": 4,
+    "drifted_features_pct": 80.0,
+    "drifted_features": [
+      "temperature",
+      "humidity",
+      "precipitation",
+      "sky_condition"
+    ],
+    "high_severity_features": [
+      "temperature",
+      "humidity",
+      "precipitation",
+      "sky_condition"
+    ],
+    "not_tested_features": []
+  },
+  "features": [
+    {
+      "feature": "temperature",
+      "feature_type": "numeric",
+      "test": "Kolmogorov-Smirnov (two-sample)",
+      "statistic": 0.27795789473684207,
+      "p_value": 3.7265571867256956e-166,
+      "alpha": 0.05,
+      "drift_detected": true,
+      "status": "drift",
+      "effect_size_metric": "ks_statistic",
+      "effect_size": 0.27795789473684207,
+      "severity": "high",
+      "reference_count": 5000,
+      "current_count": 5000,
+      "reference_valid_count": 5000,
+      "current_valid_count": 4750,
+      "has_missing_values": true,
+      "missing_values": {
+        "reference_count": 0,
+        "reference_pct": 0.0,
+        "current_count": 250,
+        "current_pct": 5.0
+      },
+      "data_quality_status": "warning",
+      "interpretation": "p-value (3.73e-166) < alpha (0.05): a hipótese nula de distribuições iguais é rejeitada; há evidência estatística de drift.",
+      "error": null,
+      "details": {
+        "reference_mean": 24.920488,
+        "current_mean": 22.035696842105263,
+        "reference_std": 3.997460799289469,
+        "current_std": 4.539370186860557,
+        "reference_median": 24.985,
+        "current_median": 22.01
+      }
+    },
+    {
+      "feature": "humidity",
+      "feature_type": "numeric",
+      "test": "Kolmogorov-Smirnov (two-sample)",
+      "statistic": 0.5484,
+      "p_value": 0.0,
+      "alpha": 0.05,
+      "drift_detected": true,
+      "status": "drift",
+      "effect_size_metric": "ks_statistic",
+      "effect_size": 0.5484,
+      "severity": "high",
+      "reference_count": 5000,
+      "current_count": 5000,
+      "reference_valid_count": 5000,
+      "current_valid_count": 5000,
+      "has_missing_values": false,
+      "missing_values": {
+        "reference_count": 0,
+        "reference_pct": 0.0,
+        "current_count": 0,
+        "current_pct": 0.0
+      },
+      "data_quality_status": "ok",
+      "interpretation": "p-value (0) < alpha (0.05): a hipótese nula de distribuições iguais é rejeitada; há evidência estatística de drift.",
+      "error": null,
+      "details": {
+        "reference_mean": 59.993672,
+        "current_mean": 74.840886,
+        "reference_std": 10.130496621410819,
+        "current_std": 10.015018214411993,
+        "reference_median": 59.8,
+        "current_median": 74.85
+      }
+    },
+    {
+      "feature": "wind_speed",
+      "feature_type": "numeric",
+      "test": "Kolmogorov-Smirnov (two-sample)",
+      "statistic": 0.0126,
+      "p_value": 0.8223009941322108,
+      "alpha": 0.05,
+      "drift_detected": false,
+      "status": "no_drift",
+      "effect_size_metric": "ks_statistic",
+      "effect_size": 0.0126,
+      "severity": "none",
+      "reference_count": 5000,
+      "current_count": 5000,
+      "reference_valid_count": 5000,
+      "current_valid_count": 5000,
+      "has_missing_values": false,
+      "missing_values": {
+        "reference_count": 0,
+        "reference_pct": 0.0,
+        "current_count": 0,
+        "current_pct": 0.0
+      },
+      "data_quality_status": "ok",
+      "interpretation": "p-value (0.822) >= alpha (0.05): não há evidência estatística suficiente para rejeitar a hipótese nula. Isso não comprova que as distribuições sejam idênticas.",
+      "error": null,
+      "details": {
+        "reference_mean": 10.734028,
+        "current_mean": 10.673508,
+        "reference_std": 5.586195397156816,
+        "current_std": 5.564843754674159,
+        "reference_median": 10.03,
+        "current_median": 10.035
+      }
+    },
+    {
+      "feature": "precipitation",
+      "feature_type": "numeric",
+      "test": "Kolmogorov-Smirnov (two-sample)",
+      "statistic": 0.45199999999999996,
+      "p_value": 0.0,
+      "alpha": 0.05,
+      "drift_detected": true,
+      "status": "drift",
+      "effect_size_metric": "ks_statistic",
+      "effect_size": 0.45199999999999996,
+      "severity": "high",
+      "reference_count": 5000,
+      "current_count": 5000,
+      "reference_valid_count": 5000,
+      "current_valid_count": 5000,
+      "has_missing_values": false,
+      "missing_values": {
+        "reference_count": 0,
+        "reference_pct": 0.0,
+        "current_count": 0,
+        "current_pct": 0.0
+      },
+      "data_quality_status": "ok",
+      "interpretation": "p-value (0) < alpha (0.05): a hipótese nula de distribuições iguais é rejeitada; há evidência estatística de drift.",
+      "error": null,
+      "details": {
+        "reference_mean": 2.021632,
+        "current_mean": 5.930912,
+        "reference_std": 2.2405724662630306,
+        "current_std": 4.755082002264104,
+        "reference_median": 1.27,
+        "current_median": 4.6850000000000005
+      }
+    },
+    {
+      "feature": "sky_condition",
+      "feature_type": "categorical",
+      "test": "Chi-square test of independence",
+      "statistic": 3571.4285714285716,
+      "p_value": 0.0,
+      "alpha": 0.05,
+      "drift_detected": true,
+      "status": "drift",
+      "effect_size_metric": "cramers_v",
+      "effect_size": 0.5976143046671968,
+      "severity": "high",
+      "reference_count": 5000,
+      "current_count": 5000,
+      "reference_valid_count": 5000,
+      "current_valid_count": 5000,
+      "has_missing_values": false,
+      "missing_values": {
+        "reference_count": 0,
+        "reference_pct": 0.0,
+        "current_count": 0,
+        "current_pct": 0.0
+      },
+      "data_quality_status": "ok",
+      "interpretation": "p-value (0) < alpha (0.05): a hipótese nula de distribuições iguais é rejeitada; há evidência estatística de drift.",
+      "error": null,
+      "details": {
+        "categories": [
+          "clear",
+          "cloudy",
+          "rainy"
+        ],
+        "observed_frequencies": {
+          "reference": {
+            "clear": 3000,
+            "cloudy": 1500,
+            "rainy": 500
+          },
+          "current": {
+            "clear": 500,
+            "cloudy": 1500,
+            "rainy": 3000
+          }
+        },
+        "reference_proportions": {
+          "clear": 0.6,
+          "cloudy": 0.3,
+          "rainy": 0.1
+        },
+        "current_proportions": {
+          "clear": 0.1,
+          "cloudy": 0.3,
+          "rainy": 0.6
+        },
+        "unexpected_categories": [],
+        "excluded_zero_categories": [],
+        "degrees_of_freedom": 2,
+        "expected_frequencies": {
+          "reference": {
+            "clear": 1750.0,
+            "cloudy": 1500.0,
+            "rainy": 1750.0
+          },
+          "current": {
+            "clear": 1750.0,
+            "cloudy": 1500.0,
+            "rainy": 1750.0
+          }
+        },
+        "cochran_conditions_met": true,
+        "p_value_method": "asymptotic"
+      }
+    }
+  ],
+  "data_quality": {
+    "overall_status": "warning",
+    "features": [
+      {
+        "feature": "temperature",
+        "reference_missing_count": 0,
+        "reference_missing_pct": 0.0,
+        "current_missing_count": 250,
+        "current_missing_pct": 5.0,
+        "unexpected_categories": [],
+        "status": "warning",
+        "issues": [
+          "5.00% de valores ausentes em produção (limiar de alerta 1.0%; referência 0.00%)."
+        ]
+      },
+      {
+        "feature": "humidity",
+        "reference_missing_count": 0,
+        "reference_missing_pct": 0.0,
+        "current_missing_count": 0,
+        "current_missing_pct": 0.0,
+        "unexpected_categories": [],
+        "status": "ok",
+        "issues": []
+      },
+      {
+        "feature": "wind_speed",
+        "reference_missing_count": 0,
+        "reference_missing_pct": 0.0,
+        "current_missing_count": 0,
+        "current_missing_pct": 0.0,
+        "unexpected_categories": [],
+        "status": "ok",
+        "issues": []
+      },
+      {
+        "feature": "precipitation",
+        "reference_missing_count": 0,
+        "reference_missing_pct": 0.0,
+        "current_missing_count": 0,
+        "current_missing_pct": 0.0,
+        "unexpected_categories": [],
+        "status": "ok",
+        "issues": []
+      },
+      {
+        "feature": "sky_condition",
+        "reference_missing_count": 0,
+        "reference_missing_pct": 0.0,
+        "current_missing_count": 0,
+        "current_missing_pct": 0.0,
+        "unexpected_categories": [],
+        "status": "ok",
+        "issues": []
+      }
+    ]
+  },
+  "model": {
+    "model_version": "rain-model-20261105T135951Z",
+    "trained_at": "2026-11-05T13:59:51+00:00",
+    "algorithm": "LogisticRegression",
+    "training_data_sha256": "b7a9f49881dcfe90863a4d0546a8286aed9f809beae242ca3cc01ae8196c2231",
+    "lineage_verified": true,
+    "holdout_metrics": {
+      "roc_auc": 0.7945597313546882,
+      "accuracy": 0.799,
+      "precision": 0.7552447552447552,
+      "recall": 0.39416058394160586,
+      "f1": 0.5179856115107914,
+      "observed_positive_rate": 0.274,
+      "predicted_positive_rate": 0.143
+    },
+    "imputation_values": {
+      "temperature": 24.99,
+      "humidity": 59.84,
+      "wind_speed": 10.08,
+      "precipitation": 1.25
+    },
+    "inference_rows": 5000,
+    "imputed_counts": {
+      "temperature": 250
+    },
+    "reference_positive_rate": 0.1576,
+    "current_positive_rate": 0.9262,
+    "reference_mean_score": 0.27295915614280464,
+    "current_mean_score": 0.841320684384261,
+    "prediction_drift": {
+      "feature": "rain_probability",
+      "feature_type": "prediction",
+      "test": "Kolmogorov-Smirnov (two-sample)",
+      "statistic": 0.7754000000000001,
+      "p_value": 0.0,
+      "alpha": 0.05,
+      "drift_detected": true,
+      "status": "drift",
+      "effect_size_metric": "ks_statistic",
+      "effect_size": 0.7754000000000001,
+      "severity": "high",
+      "reference_count": 5000,
+      "current_count": 5000,
+      "reference_valid_count": 5000,
+      "current_valid_count": 5000,
+      "has_missing_values": false,
+      "missing_values": {
+        "reference_count": 0,
+        "reference_pct": 0.0,
+        "current_count": 0,
+        "current_pct": 0.0
+      },
+      "data_quality_status": null,
+      "interpretation": "p-value (0) < alpha (0.05): a hipótese nula de distribuições iguais é rejeitada; há evidência estatística de drift.",
+      "error": null,
+      "details": {
+        "reference_mean": 0.27295915614280464,
+        "current_mean": 0.841320684384261,
+        "reference_std": 0.21924814933165906,
+        "current_std": 0.1858021926230844,
+        "reference_median": 0.20113762309336003,
+        "current_median": 0.9188640419994072
+      }
+    }
+  },
+  "retraining_decision": {
+    "retraining_recommended": true,
+    "action": "RETRAIN_RECOMMENDED_AFTER_DATA_QUALITY_REVIEW",
+    "alert_level": "critical",
+    "reasons": [
+      "4 variável(is) com drift de severidade alta (temperature, humidity, precipitation, sky_condition); limiar: 1.",
+      "80.0% das variáveis apresentam drift (limiar: 50%).",
+      "Drift de predição de severidade alta: as predições do modelo mudaram: taxa prevista de 'rain_tomorrow' 15.8% → 92.6% (KS D = 0.7754, severidade alta).",
+      "Data Quality (temperature): 5.00% de valores ausentes em produção (limiar de alerta 1.0%; referência 0.00%).",
+      "Inferência: 250 valores ausentes de temperature foram imputados com a mediana de treino (24.99)."
+    ],
+    "criteria": {
+      "high_severity_drift_count": 1,
+      "drifted_share_threshold": 0.5,
+      "prediction_drift_triggers_retraining": true,
+      "missing_warning_pct": 1.0,
+      "missing_critical_pct": 10.0,
+      "ks_severity_moderate": 0.1,
+      "ks_severity_high": 0.2,
+      "cramers_v_severity_moderate": 0.1,
+      "cramers_v_severity_high": 0.3
+    }
+  }
+}
