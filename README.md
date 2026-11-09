@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Autor** | Nyrx Oliveira de Aquino Farias |
+| **Autora** | Nyrx Oliveira de Aquino Farias |
 | **Disciplina / Professor** | Trabalho Prático de MLOps · Prof. MSc. Hugo Menezes Barra |
 | **Licença** | MIT (ver [LICENSE](LICENSE)) |
 
